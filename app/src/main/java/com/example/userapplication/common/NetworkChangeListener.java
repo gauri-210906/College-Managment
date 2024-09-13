@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.common;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
+
+import com.example.userapplication.R;
+import com.example.userapplication.common.NetworkDetails;
 
 public class NetworkChangeListener extends BroadcastReceiver {
 
