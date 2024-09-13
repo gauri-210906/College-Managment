@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "216622778339",
+    "project_id": "collegeietk",
+    "storage_bucket": "collegeietk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216622778339:android:337c5c0422c57b1d2702d6",
+        "android_client_info": {
+          "package_name": "com.example.adminapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOH7gshyrFVBDCEwhZqSOduvl6KOzi3m0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216622778339:android:e81df6a18fe805df2702d6",
+        "android_client_info": {
+          "package_name": "com.example.userapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOH7gshyrFVBDCEwhZqSOduvl6KOzi3m0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
