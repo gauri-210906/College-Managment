@@ -1,5 +1,6 @@
 package com.example.userapplication;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -27,13 +28,14 @@ public class ConfirmRegisterMobileNumberActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_register_mobile_number);
 
-        etConfirmRegisterMobileNo = findViewById(R.id.etConfirmRegisterMobileNoMobileNumber);
-        btnVerify = findViewById(R.id.btnConfirmRegisterMobileNoVerify);
+        etConfirmRegisterMobileNo = findViewById(R.id.etConfirmRegisterMobileNumberNumber);
+        btnVerify = findViewById(R.id.btnConfirmRegisterNumberVerify);
 
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
