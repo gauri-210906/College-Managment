@@ -43,7 +43,6 @@ public class ConfirmRegisterMobileNumberActivity extends AppCompatActivity {
                 } else if (etConfirmRegisterMobileNo.getText().toString().length() != 10) {
                     etConfirmRegisterMobileNo.setError("Please enter valid mobile number");
                 } else {
-
                     PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + etConfirmRegisterMobileNo.getText().toString(),
                             60, TimeUnit.SECONDS, ConfirmRegisterMobileNumberActivity.this,
                             new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -93,7 +92,5 @@ public class ConfirmRegisterMobileNumberActivity extends AppCompatActivity {
         super.onStop();
         unregisterReceiver(networkChangeListener);
     }
-
-
 
 }

@@ -40,7 +40,7 @@ public class SetUpnewPasswordActivity extends AppCompatActivity {
 
         etconfirmnewpassword = findViewById(R.id.etSetUpnewPasswordNewConfirmPassword);
         etnewpassword = findViewById(R.id.etSetUpnewPasswordNewPassword);
-        etnewpassword = findViewById(R.id.btnSetUpnewPasswordConfirm);
+        btnconfirm = findViewById(R.id.btnSetUpnewPasswordConfirm);
 
         btnconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
