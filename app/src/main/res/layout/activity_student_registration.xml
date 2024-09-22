@@ -88,7 +88,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="8sp"
                     android:hint="Enrollment Number"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:paddingLeft="8dp"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -100,6 +100,39 @@
                     android:layout_height="50dp"
                     android:layout_margin="8sp"
                     android:hint="Email ID"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterBranch"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Branch"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterClass"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Class"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterSemester"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Semester"
                     android:inputType="text"
                     android:paddingLeft="8dp"
                     android:textSize="16sp"
@@ -150,7 +183,6 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"/>
-
 
 
             </LinearLayout>

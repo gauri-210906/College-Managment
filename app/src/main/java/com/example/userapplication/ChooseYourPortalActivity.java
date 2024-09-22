@@ -26,13 +26,13 @@ public class ChooseYourPortalActivity extends AppCompatActivity {
         btnExpandStudent = findViewById(R.id.btnChooseYourPortalStudents);
         btnExpandTeacher = findViewById(R.id.btnChooseYourPortalTeacher);
 
-        /*btnExpandTeacher.setOnClickListener(new View.OnClickListener() {
+        btnExpandTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ChooseYourPortalActivity.this, TeacherLogin.class);
+                Intent i = new Intent(ChooseYourPortalActivity.this, TeacherLoginActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
 
         btnExpandStudent.setOnClickListener(new View.OnClickListener() {
             @Override

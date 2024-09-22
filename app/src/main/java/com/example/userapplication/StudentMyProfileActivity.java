@@ -37,7 +37,7 @@ import cz.msebera.android.httpclient.Header;
 public class StudentMyProfileActivity extends AppCompatActivity {
 
     ImageView ivProfilePhoto;
-    TextView tvName, tvEmail, tvMobileNo, tvEnrollment, tvUsername, tvPassword;
+    TextView tvName, tvEmail, tvMobileNo, tvEnrollment,tvBranch,tvClass,tvSemester, tvUsername, tvPassword;
     AppCompatButton btnLogout, btnEditProfile;
     GoogleSignInOptions googleSignInOptions; // shows gmail from your google account
     GoogleSignInClient googleSignInClient; // used to store selected mail option
@@ -137,6 +137,9 @@ public class StudentMyProfileActivity extends AppCompatActivity {
                         String strmobileno = jsonObject.getString("mobileno");
                         String strenrollmentno = jsonObject.getString("enrollmentno");
                         String stremailid = jsonObject.getString("emailid");
+                        String strBranch = jsonObject.getString("branch");
+                        String strClass = jsonObject.getString("class");
+                        String strSemester = jsonObject.getString("Semester");
                         String strusername = jsonObject.getString("username");
                         String strpassword = jsonObject.getString("password");
 
@@ -144,6 +147,9 @@ public class StudentMyProfileActivity extends AppCompatActivity {
                         tvMobileNo.setText(strmobileno);
                         tvEnrollment.setText(strenrollmentno);
                         tvEmail.setText(stremailid);
+                        tvBranch.setText(strBranch);
+                        tvClass.setText(strClass);
+                        tvSemester.setText(strSemester);
                         tvUsername.setText(strusername);
                         tvPassword.setText(strpassword);
 

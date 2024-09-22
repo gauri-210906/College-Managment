@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="OTP Verification"
         android:textColor="@color/black"
-        android:textSize="27sp"
+        android:textSize="25sp"
         android:layout_marginTop="20sp"
         android:textStyle="bold"/>
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Enter the OTP sent to"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_marginTop="4sp"
         android:textStyle="normal"/>
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="+91 9665370476"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_marginTop="4sp"
         android:textStyle="normal"/>
 
