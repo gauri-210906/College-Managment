@@ -42,7 +42,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
     AppCompatButton btnVerify;
     ProgressDialog progressDialog;
     EditText etInput1,etInput2,etInput3,etInput4,etInput5,etInput6;
-    private String strVerificationCode, strName, strMobileNo,strEnrollmentNumber, strEmail, strBranch,strClass,strSemester,strUsername, strPassword;
+    private String strVerificationCode, strName, strMobileNo,strEnrollmentNumber, strEmail, strBranch,strClass,strSemester,strAdharno,strUsername, strPassword;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -69,6 +69,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
         strBranch =  getIntent().getStringExtra("branch");
         strClass =  getIntent().getStringExtra("class");
         strSemester =  getIntent().getStringExtra("semester");
+        strAdharno =  getIntent().getStringExtra("aadharno");
         strUsername =  getIntent().getStringExtra("username");
         strPassword =  getIntent().getStringExtra("password");
 
@@ -180,6 +181,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
         params.put("branch", strBranch);
         params.put("class", strClass);
         params.put("semester", strSemester);
+        params.put("aadharno", strAdharno);
         params.put("username", strUsername);
         params.put("password", strPassword);
 

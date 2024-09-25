@@ -37,7 +37,7 @@ import cz.msebera.android.httpclient.Header;
 public class StudentMyProfileActivity extends AppCompatActivity {
 
     ImageView ivProfilePhoto;
-    TextView tvName, tvEmail, tvMobileNo, tvEnrollment,tvBranch,tvClass,tvSemester, tvUsername, tvPassword;
+    TextView tvName, tvEmail, tvMobileNo, tvEnrollment,tvBranch,tvClass,tvSemester,tvAadharno, tvUsername, tvPassword;
     AppCompatButton btnLogout, btnEditProfile;
     GoogleSignInOptions googleSignInOptions; // shows gmail from your google account
     GoogleSignInClient googleSignInClient; // used to store selected mail option
@@ -62,6 +62,10 @@ public class StudentMyProfileActivity extends AppCompatActivity {
         ivProfilePhoto = findViewById(R.id.ivMyProfilePhoto);
         tvMobileNo = findViewById(R.id.tvMyProfileMobileNo);
         tvEnrollment = findViewById(R.id.tvMyProfileEnrollmentNo);
+        tvBranch = findViewById(R.id.tvMyProfileBranch);
+        tvClass = findViewById(R.id.tvMyProfileClass);
+        tvSemester = findViewById(R.id.tvMyProfileSemester);
+        tvAadharno = findViewById(R.id.tvMyProfileAadharno);
         tvUsername = findViewById(R.id.tvMyProfileUsername);
         tvPassword = findViewById(R.id.tvMyProfilePassword);
         btnEditProfile = findViewById(R.id.btnMyProfileEditProfile);
@@ -140,6 +144,7 @@ public class StudentMyProfileActivity extends AppCompatActivity {
                         String strBranch = jsonObject.getString("branch");
                         String strClass = jsonObject.getString("class");
                         String strSemester = jsonObject.getString("Semester");
+                        String straadharno = jsonObject.getString("aadharno");
                         String strusername = jsonObject.getString("username");
                         String strpassword = jsonObject.getString("password");
 
@@ -150,6 +155,7 @@ public class StudentMyProfileActivity extends AppCompatActivity {
                         tvBranch.setText(strBranch);
                         tvClass.setText(strClass);
                         tvSemester.setText(strSemester);
+                        tvAadharno.setText(straadharno);
                         tvUsername.setText(strusername);
                         tvPassword.setText(strpassword);
 

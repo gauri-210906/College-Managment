@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public class StudentRegistrationActivity extends AppCompatActivity {
 
-    EditText etName,etMobileNo,etUsername,etPassword,etEmail, etEnrollmentNumber,etBranch,etClass, etSemster;
+    EditText etName,etMobileNo,etUsername,etPassword,etEmail, etEnrollmentNumber,etBranch,etClass, etSemester,etAadharno;
     Button btnRegister;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -49,7 +49,8 @@ public class StudentRegistrationActivity extends AppCompatActivity {
         etEnrollmentNumber = findViewById(R.id.etRegisterEnrollment);
         etBranch = findViewById(R.id.etRegisterBranch);
         etClass = findViewById(R.id.etRegisterClass);
-        etSemster = findViewById(R.id.etRegisterSemester);
+        etSemester = findViewById(R.id.etRegisterSemester);
+        etAadharno = findViewById(R.id.etRegisterAadharno);
         etUsername= findViewById(R.id.etRegisterUsername);
         etPassword= findViewById(R.id.etRegisterPassword);
         btnRegister= findViewById(R.id.btnStudentRegistrationRegister);
@@ -68,10 +69,11 @@ public class StudentRegistrationActivity extends AppCompatActivity {
                     etBranch.setError("Please enter branch ");
                 } else if (etClass.getText().toString().isEmpty()) {
                     etClass.setError("Please enter year");
-                } else if (etSemster.getText().toString().isEmpty()) {
-                    etSemster.setError("Please enter semester");
-                }
-                else if (!etEmail.getText().toString().contains("@") || !etEmail.getText().toString().contains(".com")) {
+                } else if (etSemester.getText().toString().isEmpty()) {
+                    etSemester.setError("Please enter semester");
+                } else if (etAadharno.getText().toString().isEmpty()) {
+                    etAadharno.setError("Please enter Aadhar Number");
+                } else if (!etEmail.getText().toString().contains("@") || !etEmail.getText().toString().contains(".com")) {
                     etEmail.setError("Invaild Email ID");
                 } else if (etEnrollmentNumber.getText().toString().isEmpty()) {
                     etEnrollmentNumber.setError("Please enter your username");
@@ -116,7 +118,8 @@ public class StudentRegistrationActivity extends AppCompatActivity {
                                     i.putExtra("emailid",etEmail.getText().toString());
                                     i.putExtra("branch",etBranch.getText().toString());
                                     i.putExtra("class", etClass.getText().toString());
-                                    i.putExtra("semester",etSemster.getText().toString());
+                                    i.putExtra("semester",etSemester.getText().toString());
+                                    i.putExtra("aadharno",etAadharno.getText().toString());
                                     i.putExtra("username",etUsername.getText().toString());
                                     i.putExtra("password",etPassword.getText().toString());
 

@@ -138,6 +138,17 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
+                <EditText
+                    android:id="@+id/etRegisterAadharno"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Aadhar Number"
+                    android:inputType="number"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
 
                 <EditText
                     android:id="@+id/etRegisterUsername"

@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
@@ -25,6 +27,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        buildFeatures{
+            viewBinding  = true
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
