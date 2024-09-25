@@ -24,6 +24,8 @@
         android:id="@+id/lvTaskFragmentShowAllTask"
         android:layout_marginTop="10sp"
         android:scrollbars="vertical"
+        android:divider="@color/transparent"
+        android:dividerHeight="10.0sp"
         />
 
     <TextView

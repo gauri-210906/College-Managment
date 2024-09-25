@@ -10,6 +10,7 @@
     <color name="blue_135">#497387</color>
     <color name="blue_131">#2E6883</color>
     <color name="light">#AFE2E8</color>
+    <color name="transparent">#F3F7F8</color>
 
     <color name="primary">#047CDC</color>
     <color name="secondary">#0F81DC</color>

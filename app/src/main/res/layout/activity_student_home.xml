@@ -22,7 +22,6 @@
             android:layout_alignParentBottom="true"
             app:itemRippleColor="@color/white"
             app:itemIconTint="@color/icon_color"
-            android:background="@drawable/bottom_navigation_background"
             />
 
 </RelativeLayout>
