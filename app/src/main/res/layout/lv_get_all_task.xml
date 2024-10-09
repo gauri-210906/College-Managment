@@ -79,6 +79,7 @@
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
     android:layout_marginVertical="10dp"
+    android:id="@+id/cvlvgetalltaskTaskList"
     android:layout_marginHorizontal="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp"
@@ -96,6 +97,7 @@
             android:layout_height="60dp"
             android:id="@+id/lvivgetalltaskTaskImage"
             android:scaleType="centerCrop"
+            android:src="@drawable/task"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
@@ -122,7 +124,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_toEndOf="@id/tvgetalltaskTaskSubject"/>
 
         <TextView

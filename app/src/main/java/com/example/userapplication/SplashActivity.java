@@ -26,7 +26,6 @@ public class SplashActivity extends AppCompatActivity {
 
         ivLogo = findViewById(R.id.ivSplashScreenLogo);
 
-
         animTranslate = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.translate);
 
         ivLogo.startAnimation(animTranslate);

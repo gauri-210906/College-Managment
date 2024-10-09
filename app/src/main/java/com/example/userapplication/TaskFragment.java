@@ -13,8 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.userapplication.common.AdapterGetAllTaskDetails;
+import com.example.userapplication.common.POJOGetAllTaskDetails;
 import com.example.userapplication.common.Urls;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -90,12 +90,12 @@ public class TaskFragment extends Fragment {
                     for (int i=0; i<jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String strid = jsonObject.getString("id");
-                        String strImage = jsonObject.getString("taskimage");
+                        /*String strImage = jsonObject.getString("taskimage");*/
                         String strSubject = jsonObject.getString("subject");
                         String strTaskDescription = jsonObject.getString("taskdescription");
                         String strTaskDeadline = jsonObject.getString("taskdeadline");
 
-                        pojoGetAllTaskDetails.add(new POJOGetAllTaskDetails(strid,strImage,strSubject,strTaskDescription,strTaskDeadline));
+                        pojoGetAllTaskDetails.add(new POJOGetAllTaskDetails(strid,strSubject,strTaskDescription,strTaskDeadline));
                     }
 
                     adapterGetAllTaskDetails = new AdapterGetAllTaskDetails(pojoGetAllTaskDetails,getActivity());
@@ -117,7 +117,6 @@ public class TaskFragment extends Fragment {
                 Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
             }
 
-
         });
 
     }
@@ -129,7 +128,8 @@ public class TaskFragment extends Fragment {
 
         for (POJOGetAllTaskDetails obj : pojoGetAllTaskDetails){
 
-            if (obj.getSubject().toUpperCase().contains(query.toUpperCase())){
+            if (obj.getSubject().toUpperCase().contains(query.toUpperCase()) ||
+                    obj.getDeadline().toUpperCase().contains(query.toUpperCase())){
 
                 tempTask.add(obj);
 

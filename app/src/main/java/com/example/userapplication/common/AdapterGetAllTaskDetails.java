@@ -1,6 +1,7 @@
-package com.example.userapplication;
+package com.example.userapplication.common;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.userapplication.common.Urls;
+import androidx.cardview.widget.CardView;
+
+import com.example.userapplication.R;
+import com.example.userapplication.SubjectWiseTaskActivity;
+import com.example.userapplication.common.POJOGetAllTaskDetails;
 
 import java.util.List;
 
@@ -52,10 +55,12 @@ public class AdapterGetAllTaskDetails extends BaseAdapter {
 
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.lv_get_all_task,null);
-            holder.ivTaskImage = view.findViewById(R.id.lvivgetalltaskTaskImage);
+
             holder.tvSubject = view.findViewById(R.id.tvgetalltaskTaskSubject);
             holder.tvTaskDescription = view.findViewById(R.id.tvgetalltaskTaskDescription);
             holder.tvTaskDeadline = view.findViewById(R.id.tvgetalltaskTaskDeadline);
+
+            holder.cvTaskList = view.findViewById(R.id.cvlvgetalltaskTaskList);
 
             view.setTag(holder);
 
@@ -68,18 +73,23 @@ public class AdapterGetAllTaskDetails extends BaseAdapter {
         holder.tvTaskDescription.setText(obj.getTaskDescription());
         holder.tvTaskDeadline.setText(obj.getDeadline());
 
-        Glide.with(activity)
-                .load(Urls.webServiceAddress+"images/"+obj.getTaskImage())
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .error(R.drawable.image_not_found)
-                .into(holder.ivTaskImage);
 
+        holder.cvTaskList.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(activity, SubjectWiseTaskActivity.class);
+                i.putExtra("subject",obj.getSubject());
+                activity.startActivity(i);
+            }
+        });
 
         return view;
     }
 
     class ViewHolder{
+
+        CardView cvTaskList;
         ImageView ivTaskImage;
         TextView tvSubject, tvTaskDescription, tvTaskDeadline;
 

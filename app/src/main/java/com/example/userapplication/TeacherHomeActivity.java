@@ -41,14 +41,15 @@ public class TeacherHomeActivity extends AppCompatActivity implements BottomNavi
 
         bottomNavigationView = findViewById(R.id.teacherHomeBottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.homeBottomNavigationMenuHome);
+        bottomNavigationView.setSelectedItemId(R.id.homeBottomNavigationMenuTeacherHome);
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_menu, menu);
+        inflater.inflate(R.menu.home_menu_teacher, menu);
 
         return true;
     }
@@ -56,10 +57,10 @@ public class TeacherHomeActivity extends AppCompatActivity implements BottomNavi
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if (item.getItemId() == R.id.homeMenuMyProfile){
+        if (item.getItemId() == R.id.homeMenuTeacherMyProfile){
             Intent i = new Intent(TeacherHomeActivity.this, TeacherMyProfileActivity.class);
             startActivity(i);
-        } else if (item.getItemId() == R.id.homeMenuLogOut) {
+        } else if (item.getItemId() == R.id.homeMenuTeacherLogOut) {
 
             logout();
         }
@@ -82,7 +83,9 @@ public class TeacherHomeActivity extends AppCompatActivity implements BottomNavi
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent i = new Intent(TeacherHomeActivity.this, TeacherLoginActivity.class);
+                editor.putBoolean("isLogin",false).commit();
                 startActivity(i);
+                finish();
             }
         }).create().show();
 
@@ -102,29 +105,29 @@ public class TeacherHomeActivity extends AppCompatActivity implements BottomNavi
         unregisterReceiver(networkChangeListener);
     }
 
-    HomeFragment teacherHomeFragment = new HomeFragment();
-    TaskFragment teacherTaskFragment = new TaskFragment();
-    NotificationFragment teacherNotificationFragment = new NotificationFragment();
-    AddFragment teacherAddFragment = new AddFragment();
+    teacherHomeFragment teacherHomeFragment = new teacherHomeFragment();
+    teacherTaskFragment teacherTaskFragment = new teacherTaskFragment();
+    teacherNotificationFragment teacherNotificationFragment = new teacherNotificationFragment();
+    teacherAddFragment teacherAddFragment = new teacherAddFragment();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        if (item.getItemId() == R.id.homeBottomNavigationMenuHome){
+        if (item.getItemId() == R.id.homeBottomNavigationMenuTeacherHome){
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHomeStudent,teacherHomeFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutTeacher,teacherHomeFragment).commit();
 
-        } else if (item.getItemId() == R.id.homeBottomNavigationMenuTask) {
+        } else if (item.getItemId() == R.id.homeBottomNavigationMenuTeacherTask) {
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHomeStudent,teacherTaskFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutTeacher,teacherTaskFragment).commit();
 
-        } else if (item.getItemId() == R.id.homeBottomNavigationMenuNotification) {
+        } else if (item.getItemId() == R.id.homeBottomNavigationMenuTeacherNotification) {
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHomeStudent,teacherNotificationFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutTeacher,teacherNotificationFragment).commit();
 
-        } else if (item.getItemId() == R.id.homeBottomNavigationMenuAdd) {
+        } else if (item.getItemId() == R.id.homeBottomNavigationMenuTeacherAdd) {
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutHomeStudent,teacherAddFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutTeacher,teacherAddFragment).commit();
 
         }
         return true;

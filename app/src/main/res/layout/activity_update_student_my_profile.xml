@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="40sp"
+    tools:context=".UpdateStudentMyProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10sp">
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Name"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfilemobileno"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:enabled="false"
+            android:maxLength="10"
+            android:hint="Mobile Number"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileEnrollment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Enrollment Number"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Email ID"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileBranch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Branch"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileClass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Class"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileSemester"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Semester"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileAadharno"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Aadhar Number"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfileUsername"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Username"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etUpdatestudentProfilePassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Password"
+            android:enabled="true"
+            android:inputType="textPassword"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnUpdatestudentProfileButton"
+            android:text="Update"
+            android:background="@drawable/btnbackground"
+            android:layout_marginTop="30sp"
+            android:layout_marginBottom="50sp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+
+</ScrollView>

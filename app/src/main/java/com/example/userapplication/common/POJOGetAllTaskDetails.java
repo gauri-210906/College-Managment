@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.common;
 
 public class POJOGetAllTaskDetails {
     // plain old java object
@@ -7,9 +7,8 @@ public class POJOGetAllTaskDetails {
 
     String id, taskImage, subject, taskDescription, deadline;
 
-    public POJOGetAllTaskDetails(String sid, String staskimage, String ssubject, String staskdescription, String sdeadline) {
+    public POJOGetAllTaskDetails(String sid, String ssubject, String staskdescription, String sdeadline) {
         this.id = sid;
-        this.taskImage = staskimage;
         this.subject = ssubject;
         this.taskDescription = staskdescription;
         this.deadline = sdeadline;
@@ -21,14 +20,6 @@ public class POJOGetAllTaskDetails {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTaskImage() {
-        return taskImage;
-    }
-
-    public void setTaskImage(String taskImage) {
-        this.taskImage = taskImage;
     }
 
     public String getSubject() {

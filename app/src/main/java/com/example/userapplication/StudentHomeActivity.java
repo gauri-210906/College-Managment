@@ -77,7 +77,9 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent i = new Intent(StudentHomeActivity.this, StudentLoginActivity.class);
+                editor.putBoolean("isLogin",false).commit();
                 startActivity(i);
+                finish();
             }
         }).create().show();
 

@@ -65,6 +65,12 @@ public class TeacherLoginActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(TeacherLoginActivity.this);
         editor = sharedPreferences.edit();
 
+        if (sharedPreferences.getBoolean("isLogin", false)){
+            Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +117,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TeacherLoginActivity.this, ConfirmRegisterMobileNumberActivity.class);
+                Intent i = new Intent(TeacherLoginActivity.this, ConfirmRegisterMobileNumberTeacherActivity.class);
                 startActivity(i);
             }
         });
@@ -128,7 +134,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
         params.put("username", etUsername.getText().toString());
         params.put("password", etPassword.getText().toString());
 
-        client.post(Urls.loginUserWebService,params,new JsonHttpResponseHandler()
+        client.post(Urls.teacherLoginWebService,params,new JsonHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -141,6 +147,9 @@ public class TeacherLoginActivity extends AppCompatActivity {
                                 Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
                                 editor.putString("username",etUsername.getText().toString()).commit();
                                 editor.putString("password", etPassword.getText().toString()).commit();
+
+                                editor.putBoolean("isLogin",true).commit();
+
                                 startActivity(i);
                                 finish();
                             } else {

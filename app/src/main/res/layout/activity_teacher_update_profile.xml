@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50sp"
+    tools:context=".TeacherUpdateProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10sp">
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Name"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfilemobileno"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:enabled="false"
+            android:maxLength="10"
+            android:hint="Mobile Number"
+            android:inputType="number"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Email ID"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfileBranch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Branch"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfileExperience"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Experience"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfileEducation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Education"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfileUsername"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Username"
+            android:inputType="text"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etTeacherUpdateProfilePassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="8sp"
+            android:hint="Password"
+            android:enabled="false"
+            android:inputType="textPassword"
+            android:paddingLeft="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_marginBottom="50sp"
+            android:id="@+id/btnTeacherUpdateProfileButton"
+            android:text="Update"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/btnbackground"/>
+
+    </LinearLayout>
+</ScrollView>

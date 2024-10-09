@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentLoginActivity"
-    android:layout_margin="20sp">
+    android:layout_margin="10sp">
 
     <ImageView
         android:id="@+id/ivLoginLogo"
@@ -112,6 +112,7 @@
             android:layout_below="@id/ivLoginLogo"
             android:textAlignment="textEnd"
             android:layout_marginTop="20sp"
+            android:layout_marginBottom="10sp"
             android:layout_marginEnd="7sp"
             />
 
@@ -150,7 +151,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="5sp"
-            android:layout_marginBottom="10sp"
             android:src="@drawable/google" />
 
     </LinearLayout>

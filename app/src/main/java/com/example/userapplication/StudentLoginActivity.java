@@ -74,6 +74,12 @@ public class StudentLoginActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(StudentLoginActivity.this);
         editor = sharedPreferences.edit();
 
+        if (sharedPreferences.getBoolean("isLogin", false)){
+            Intent i = new Intent(StudentLoginActivity.this, StudentHomeActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleSignInClient = GoogleSignIn.getClient(StudentLoginActivity.this, googleSignInOptions);
 
@@ -209,6 +215,9 @@ public class StudentLoginActivity extends AppCompatActivity {
                                 Intent i = new Intent(StudentLoginActivity.this, StudentHomeActivity.class);
                                 editor.putString("username",etUsername.getText().toString()).commit();
                                 editor.putString("password", etPassword.getText().toString()).commit();
+
+                                editor.putBoolean("isLogin",true).commit();
+
                                 startActivity(i);
                                 finish();
                             } else {

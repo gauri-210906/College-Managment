@@ -11,18 +11,18 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/frameLayoutHomeStudent"
+        android:id="@+id/frameLayoutTeacher"
         android:layout_above="@id/teacherHomeBottomNavigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/teacherHomeBottomNavigation"
-        app:menu="@menu/menu_home_teacher"
+        app:menu="@menu/bottom_navigation_menu_home_teacher"
         android:layout_alignParentBottom="true"
         app:itemRippleColor="@color/white"
         app:itemIconTint="@color/icon_color"
-        android:background="@drawable/bottom_navigation_background"
+
         />
 
 </RelativeLayout>

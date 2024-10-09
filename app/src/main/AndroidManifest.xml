@@ -17,11 +17,30 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TeacherUpdateProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmRegisterMobileNumberTeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetPasswordVerifyTecherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SetUpnewPasswordTeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateStudentMyProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubjectWiseTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".TeacherMyProfileActivity"
             android:exported="false" />
         <activity
             android:name=".TeacherHomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/ShowActionbar" />
         <activity
             android:name=".TeacherLoginActivity"
             android:exported="false" />

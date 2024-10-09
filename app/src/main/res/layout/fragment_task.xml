@@ -12,13 +12,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/svFragmentTaskSearchView"
         android:layout_margin="20sp"
-        android:padding="8sp"
+        android:padding="3sp"
         app:queryHint="Search Task"
         app:iconifiedByDefault="false"
         android:background="@drawable/btn_background"
         />
 
     <ListView
+        android:layout_margin="10sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lvTaskFragmentShowAllTask"

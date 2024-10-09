@@ -76,6 +76,8 @@ public class StudentMyProfileActivity extends AppCompatActivity {
 
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
 
+
+
         if (googleSignInAccount != null){
             String name = googleSignInAccount.getDisplayName();
             String email = googleSignInAccount.getEmail();
@@ -94,7 +96,6 @@ public class StudentMyProfileActivity extends AppCompatActivity {
             });
 
         }
-
 
 
     }
@@ -143,7 +144,7 @@ public class StudentMyProfileActivity extends AppCompatActivity {
                         String stremailid = jsonObject.getString("emailid");
                         String strBranch = jsonObject.getString("branch");
                         String strClass = jsonObject.getString("class");
-                        String strSemester = jsonObject.getString("Semester");
+                        String strSemester = jsonObject.getString("semester");
                         String straadharno = jsonObject.getString("aadharno");
                         String strusername = jsonObject.getString("username");
                         String strpassword = jsonObject.getString("password");
@@ -165,6 +166,26 @@ public class StudentMyProfileActivity extends AppCompatActivity {
                                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                                 .error(R.drawable.image_not_found)
                                 .into(ivProfilePhoto);
+
+
+                        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(StudentMyProfileActivity.this, UpdateStudentMyProfileActivity.class);
+                                i.putExtra("name",strname);
+                                i.putExtra("mobileno",strmobileno);
+                                i.putExtra("enrollmentno",strenrollmentno);
+                                i.putExtra("emailid",stremailid);
+                                i.putExtra("branch",strBranch);
+                                i.putExtra("class",strClass);
+                                i.putExtra("semester",strSemester);
+                                i.putExtra("aadharno",straadharno);
+                                i.putExtra("username",strUsername);
+                                i.putExtra("password",strpassword);
+                                startActivity(i);
+                            }
+                        });
+
 
 
                     }
