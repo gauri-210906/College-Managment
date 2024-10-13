@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.student;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,10 +10,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.userapplication.R;
 import com.example.userapplication.common.Urls;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -116,7 +114,7 @@ public class UpdateStudentMyProfileActivity extends AppCompatActivity {
 
                     if (status.equals("1")){
                         Toast.makeText(UpdateStudentMyProfileActivity.this, "Profile Successfully Updated", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(UpdateStudentMyProfileActivity.this,StudentMyProfileActivity.class);
+                        Intent i = new Intent(UpdateStudentMyProfileActivity.this, StudentMyProfileActivity.class);
                         startActivity(i);
                         finish();
 

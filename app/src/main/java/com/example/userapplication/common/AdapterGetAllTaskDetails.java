@@ -12,8 +12,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 
 import com.example.userapplication.R;
-import com.example.userapplication.SubjectWiseTaskActivity;
-import com.example.userapplication.common.POJOGetAllTaskDetails;
+import com.example.userapplication.student.SubjectWiseTaskActivity;
 
 import java.util.List;
 

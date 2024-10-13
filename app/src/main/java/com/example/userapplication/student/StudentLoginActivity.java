@@ -1,5 +1,6 @@
-package com.example.userapplication;
+package com.example.userapplication.student;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -17,17 +18,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.common.Urls;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -37,39 +40,58 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class TeacherLoginActivity extends AppCompatActivity {
 
-    ImageView ivLogo;
-    TextView tvLoginHere,tvForgetPassword;
+public class StudentLoginActivity extends AppCompatActivity {
+
+    ImageView ivLogo, ivGoogleSignIn;
+    TextView tvLoginHere, tvNewUser,tvForgetPassword;
     EditText etUsername, etPassword;
     CheckBox cbShowHide;
     AppCompatButton btnLogin;
     ProgressDialog progressDialog;
+    GoogleSignInOptions googleSignInOptions; // shows gmail from your google account
+    GoogleSignInClient googleSignInClient; // used to store selected mail option
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_login);
+        setContentView(R.layout.activity_student_login);
 
         ivLogo = findViewById(R.id.ivLoginLogo);
         tvLoginHere = findViewById(R.id.tvLoginTitle);
+        tvNewUser = findViewById(R.id.tvLoginNewUser);
         etUsername = findViewById(R.id.etLoginUsername);
         etPassword = findViewById(R.id.etLoginPassword);
         cbShowHide = findViewById(R.id.cbLoginShowHidePassword);
         btnLogin = findViewById(R.id.btnLoginLogin);
+        ivGoogleSignIn = findViewById(R.id.ivGoogle);
         tvForgetPassword = findViewById(R.id.tvLoginForgetPassword);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(TeacherLoginActivity.this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(StudentLoginActivity.this);
         editor = sharedPreferences.edit();
 
         if (sharedPreferences.getBoolean("isLogin", false)){
-            Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
+            Intent i = new Intent(StudentLoginActivity.this, StudentHomeActivity.class);
             startActivity(i);
             finish();
         }
+
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(StudentLoginActivity.this, googleSignInOptions);
+
+        ivGoogleSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                signIn();
+
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +111,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                 }
 
                 else {
-                    progressDialog = new ProgressDialog(TeacherLoginActivity.this);
+                    progressDialog = new ProgressDialog(StudentLoginActivity.this);
                     progressDialog.setTitle("Please Wait");
                     progressDialog.setMessage("Login under process...");
                     progressDialog.show();
@@ -117,59 +139,46 @@ public class TeacherLoginActivity extends AppCompatActivity {
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TeacherLoginActivity.this, ConfirmRegisterMobileNumberTeacherActivity.class);
+                Intent i = new Intent(StudentLoginActivity.this, ConfirmRegisterMobileNumberActivity.class);
                 startActivity(i);
             }
         });
 
 
+        tvNewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StudentLoginActivity.this, StudentRegistrationActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
     }
 
 
-    private void userLogin() {
+    private void signIn() {
+        Intent i = googleSignInClient.getSignInIntent();
+        startActivityForResult(i,999);
+    }
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        params.put("username", etUsername.getText().toString());
-        params.put("password", etPassword.getText().toString());
+        if (requestCode == 999){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                Intent i = new Intent(StudentLoginActivity.this, StudentMyProfileActivity.class);
+                startActivity(i);
+                finish();
 
-        client.post(Urls.teacherLoginWebService,params,new JsonHttpResponseHandler()
-                {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
-                        try {
-                            String status = response.getString("success");
-                            if (status.equals("1")){
-                                progressDialog.dismiss();
-
-                                Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
-                                editor.putString("username",etUsername.getText().toString()).commit();
-                                editor.putString("password", etPassword.getText().toString()).commit();
-
-                                editor.putBoolean("isLogin",true).commit();
-
-                                startActivity(i);
-                                finish();
-                            } else {
-                                progressDialog.dismiss();
-                                Toast.makeText(TeacherLoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e){
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse);
-                        progressDialog.dismiss();
-                        Toast.makeText(TeacherLoginActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
+            } catch (ApiException e) {
+                Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }
 
     }
 
@@ -184,5 +193,52 @@ public class TeacherLoginActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         unregisterReceiver(networkChangeListener);
+    }
+
+    private void userLogin() {
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("username", etUsername.getText().toString());
+        params.put("password", etPassword.getText().toString());
+
+        client.post(Urls.loginUserWebService,params,new JsonHttpResponseHandler()
+                {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+                        try {
+                            String status = response.getString("success");
+                            if (status.equals("1")){
+                                progressDialog.dismiss();
+
+                                Intent i = new Intent(StudentLoginActivity.this, StudentHomeActivity.class);
+                                editor.putString("username",etUsername.getText().toString()).commit();
+                                editor.putString("password", etPassword.getText().toString()).commit();
+
+                                editor.putBoolean("isLogin",true).commit();
+
+                                startActivity(i);
+                                finish();
+                            } else {
+                                progressDialog.dismiss();
+                                Toast.makeText(StudentLoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e){
+                            throw new RuntimeException(e);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                        super.onFailure(statusCode, headers, throwable, errorResponse);
+                        progressDialog.dismiss();
+                        Toast.makeText(StudentLoginActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+
     }
 }

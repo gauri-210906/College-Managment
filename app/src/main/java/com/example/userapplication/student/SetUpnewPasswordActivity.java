@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.student;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,13 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.common.Urls;
 import com.loopj.android.http.AsyncHttpClient;
@@ -27,7 +24,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class SetUpnewPasswordTeacherActivity extends AppCompatActivity {
+public class SetUpnewPasswordActivity extends AppCompatActivity {
 
     String strMobileNo;
     EditText etnewpassword, etconfirmnewpassword;
@@ -35,31 +32,28 @@ public class SetUpnewPasswordTeacherActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_set_upnew_password_teacher);
-
+        setContentView(R.layout.activity_set_upnew_password);
 
         strMobileNo = getIntent().getStringExtra("mobileno");
 
-        etconfirmnewpassword = findViewById(R.id.etSetUpnewPasswordTeacherNewConfirmPassword);
-        etnewpassword = findViewById(R.id.etSetUpnewPasswordTeacherNewPassword);
-        btnconfirm = findViewById(R.id.btnSetUpnewPasswordTeacherConfirm);
+        etconfirmnewpassword = findViewById(R.id.etSetUpnewPasswordNewConfirmPassword);
+        etnewpassword = findViewById(R.id.etSetUpnewPasswordNewPassword);
+        btnconfirm = findViewById(R.id.btnSetUpnewPasswordConfirm);
 
         btnconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (etnewpassword.getText().toString().isEmpty() || etconfirmnewpassword.getText().toString().isEmpty()){
-                    Toast.makeText(SetUpnewPasswordTeacherActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetUpnewPasswordActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                 }
                 else if(!etnewpassword.getText().toString().equals(etconfirmnewpassword.getText().toString())){
                     etconfirmnewpassword.setError("Password did not match");
 
                 } else{
-                    progressDialog = new ProgressDialog(SetUpnewPasswordTeacherActivity.this);
+                    progressDialog = new ProgressDialog(SetUpnewPasswordActivity.this);
                     progressDialog.setTitle("Updating password");
                     progressDialog.setMessage("Please wait...");
                     progressDialog.setCanceledOnTouchOutside(false);
@@ -95,7 +89,7 @@ public class SetUpnewPasswordTeacherActivity extends AppCompatActivity {
         params.put("mobileno",strMobileNo);
         params.put("password",etnewpassword.getText().toString());
 
-        client.post(Urls.teacherForgetPasswordWebService, params, new JsonHttpResponseHandler(){
+        client.post(Urls.forgetPasswordWebService, params, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -103,11 +97,11 @@ public class SetUpnewPasswordTeacherActivity extends AppCompatActivity {
                 try {
                     String status = response.getString("success");
                     if (status.equals("1")){
-                        Intent i = new Intent(SetUpnewPasswordTeacherActivity.this, TeacherLoginActivity.class);
+                        Intent i = new Intent(SetUpnewPasswordActivity.this, StudentLoginActivity.class);
                         startActivity(i);
                         finish();
                     } else {
-                        Toast.makeText(SetUpnewPasswordTeacherActivity.this, "Password not changed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetUpnewPasswordActivity.this, "Password not changed", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -117,12 +111,11 @@ public class SetUpnewPasswordTeacherActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                Toast.makeText(SetUpnewPasswordTeacherActivity.this, "Server error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SetUpnewPasswordActivity.this, "Server error", Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.teacher;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -12,14 +12,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

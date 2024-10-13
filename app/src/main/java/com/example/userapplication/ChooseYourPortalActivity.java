@@ -11,6 +11,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.userapplication.common.NetworkChangeListener;
+import com.example.userapplication.student.StudentLoginActivity;
+import com.example.userapplication.teacher.TeacherLoginActivity;
 
 public class ChooseYourPortalActivity extends AppCompatActivity {
 

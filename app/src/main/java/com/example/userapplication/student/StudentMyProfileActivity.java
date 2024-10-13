@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.student;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -18,6 +18,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.common.Urls;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

@@ -17,44 +17,44 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".TeacherUpdateProfileActivity"
+            android:name=".teacher.TeacherUpdateProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ConfirmRegisterMobileNumberTeacherActivity"
+            android:name=".teacher.ConfirmRegisterMobileNumberTeacherActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgetPasswordVerifyTecherActivity"
+            android:name=".teacher.ForgetPasswordVerifyTecherActivity"
             android:exported="false" />
         <activity
-            android:name=".SetUpnewPasswordTeacherActivity"
+            android:name=".teacher.SetUpnewPasswordTeacherActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateStudentMyProfileActivity"
+            android:name=".student.UpdateStudentMyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".SubjectWiseTaskActivity"
+            android:name=".student.SubjectWiseTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".TeacherMyProfileActivity"
+            android:name=".teacher.TeacherMyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".TeacherHomeActivity"
+            android:name=".teacher.TeacherHomeActivity"
             android:exported="false"
             android:theme="@style/ShowActionbar" />
         <activity
-            android:name=".TeacherLoginActivity"
+            android:name=".teacher.TeacherLoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SetUpnewPasswordActivity"
+            android:name=".student.SetUpnewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgetPasswordVerifyActivity"
+            android:name=".student.ForgetPasswordVerifyActivity"
             android:exported="false" />
         <activity
-            android:name=".ConfirmRegisterMobileNumberActivity"
+            android:name=".student.ConfirmRegisterMobileNumberActivity"
             android:exported="false" />
         <activity
-            android:name=".VerifyOTPActivity"
+            android:name=".student.VerifyOTPActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
@@ -62,17 +62,17 @@
             android:name=".ChooseYourPortalActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentMyProfileActivity"
+            android:name=".student.StudentMyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentRegistrationActivity"
+            android:name=".student.StudentRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentHomeActivity"
+            android:name=".student.StudentHomeActivity"
             android:exported="false"
             android:theme="@style/ShowActionbar" />
         <activity
-            android:name=".StudentLoginActivity"
+            android:name=".student.StudentLoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

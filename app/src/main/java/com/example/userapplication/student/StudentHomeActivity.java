@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.student;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

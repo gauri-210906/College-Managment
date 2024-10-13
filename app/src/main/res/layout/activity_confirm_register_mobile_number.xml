@@ -9,7 +9,7 @@
     android:layout_margin="20sp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ConfirmRegisterMobileNumberActivity">
+    tools:context=".student.ConfirmRegisterMobileNumberActivity">
 
 
     <ImageView

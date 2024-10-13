@@ -1,4 +1,4 @@
-package com.example.userapplication;
+package com.example.userapplication.teacher;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,10 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +29,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class ForgetPasswordVerifyActivity extends AppCompatActivity {
+public class ForgetPasswordVerifyTecherActivity extends AppCompatActivity {
 
     TextView tvMobileNo, tvResendOTP;
     AppCompatButton btnVerify;
@@ -39,6 +41,7 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_forget_password_verify);
 
         tvMobileNo = findViewById(R.id.tvVerifyOTPMobileNo);
@@ -68,7 +71,7 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
                         etInput5.getText().toString().trim().isEmpty() ||
                         etInput6.getText().toString().trim().isEmpty()){
 
-                    Toast.makeText(ForgetPasswordVerifyActivity.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgetPasswordVerifyTecherActivity.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -76,7 +79,7 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
                         etInput4.getText().toString() + etInput5.getText().toString() + etInput6.getText().toString();
 
                 if (strVerificationCode != null){
-                    progressDialog = new ProgressDialog(ForgetPasswordVerifyActivity.this);
+                    progressDialog = new ProgressDialog(ForgetPasswordVerifyTecherActivity.this);
                     progressDialog.setTitle("Verifying OTP...");
                     progressDialog.setMessage("Please wait");
                     progressDialog.setCanceledOnTouchOutside(false);
@@ -90,7 +93,7 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
 
                             if (task.isSuccessful()){
                                 progressDialog.dismiss();
-                                Intent i = new Intent(ForgetPasswordVerifyActivity.this, SetUpnewPasswordActivity.class);
+                                Intent i = new Intent(ForgetPasswordVerifyTecherActivity.this, SetUpnewPasswordTeacherActivity.class);
                                 i.putExtra("mobileno",strMobileNo);
                                 startActivity(i);
                                 finish();
@@ -98,7 +101,7 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
 
                             } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(ForgetPasswordVerifyActivity.this, "OTP verification failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ForgetPasswordVerifyTecherActivity.this, "OTP verification failed", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -111,19 +114,19 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
         tvResendOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + strMobileNo, 60, TimeUnit.SECONDS, ForgetPasswordVerifyActivity.this,
+                PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + strMobileNo, 60, TimeUnit.SECONDS, ForgetPasswordVerifyTecherActivity.this,
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                 progressDialog.dismiss();
-                                Toast.makeText(ForgetPasswordVerifyActivity.this, "Verification Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ForgetPasswordVerifyTecherActivity.this, "Verification Completed", Toast.LENGTH_SHORT).show();
 
                             }
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(ForgetPasswordVerifyActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ForgetPasswordVerifyTecherActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -266,5 +269,6 @@ public class ForgetPasswordVerifyActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
