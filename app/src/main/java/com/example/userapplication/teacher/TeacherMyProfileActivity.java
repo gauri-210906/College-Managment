@@ -5,14 +5,18 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -29,17 +33,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 import cz.msebera.android.httpclient.Header;
 
 public class TeacherMyProfileActivity extends AppCompatActivity {
 
     ImageView ivProfilePhoto;
     TextView tvName, tvEmail, tvMobileNo,tvBranch, tvExperience,tvEducation,tvUsername, tvPassword;
-    AppCompatButton btnLogout, btnEditProfile;
+    AppCompatButton btnLogout, btnEditProfile, btnEditProfilePhoto;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     SharedPreferences sharedPreferences;
     String strUsername,strPassword;
+    private int PICK_IMAGE_REQUEST = 1;
+    Bitmap bitmap;
+    Uri filepath;
     ProgressDialog progressDialog;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -63,6 +74,14 @@ public class TeacherMyProfileActivity extends AppCompatActivity {
         tvPassword = findViewById(R.id.tvTeacherMyProfilePassword);
         btnEditProfile = findViewById(R.id.btnTeacherMyProfileEditProfile);
         btnLogout = findViewById(R.id.btnTeacherMyProfileSignOut);
+        btnEditProfilePhoto = findViewById(R.id.btnTeacherMyProfileEditProfilePhoto);
+
+        btnEditProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
+            }
+        });
 
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +93,42 @@ public class TeacherMyProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showFileChooser() {
+
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(i,"Select Profile Photo"), PICK_IMAGE_REQUEST);
+
+        Intent intent = new Intent(TeacherMyProfileActivity.this, ChangeTeacherProfilePhotoActivity.class);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();  // to convert image to byte array
+        bitmap.compress(Bitmap.CompressFormat.PNG,80,byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        intent.putExtra("bitmap", byteArray);
+
+        startActivity(intent);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
+            filepath = data.getData();
+
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filepath);
+                ivProfilePhoto.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
     }
 
     @Override

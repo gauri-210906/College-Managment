@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- GPS or network provider through location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +18,47 @@
         android:theme="@style/Theme.UserApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".teacher.TeacherVerifyOTPActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.TeacherRegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.ChangeTeacherProfilePhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".student.StudentInsertProfilePhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.ShowStudentWiseDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.YearWiseStudentsListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.UserApplication" />
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCb57LvM2o0GdYdEeCEVuf8GaAWie1tnKA" />
+
+        <activity
+            android:name=".teacher.ViewAllStudentsLocationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_view_all_students_location" />
+        <activity
+            android:name=".teacher.DepartmentWiseYearActivity"
+            android:exported="false" />
         <activity
             android:name=".teacher.TeacherUpdateProfileActivity"
             android:exported="false" />

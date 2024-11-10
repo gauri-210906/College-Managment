@@ -15,10 +15,15 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.userapplication.R;
+import com.example.userapplication.common.AdapterGetAllDepartmentDetails;
 import com.example.userapplication.common.NetworkChangeListener;
+import com.example.userapplication.common.POJOGetAllDepartmentDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 public class TeacherHomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -26,6 +31,7 @@ public class TeacherHomeActivity extends AppCompatActivity implements BottomNavi
     BottomNavigationView bottomNavigationView;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
 
     @SuppressLint("MissingInflatedId")
     @Override

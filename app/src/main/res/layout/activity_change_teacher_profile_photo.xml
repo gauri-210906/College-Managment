@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signup_background">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".teacher.ChangeTeacherProfilePhotoActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7">
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15sp"
+            android:layout_marginBottom="30dp"
+            app:cardCornerRadius="28dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="250sp"
+                    android:layout_height="250sp"
+                    android:layout_marginTop="20sp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/ivChangeTeacherProfilePhotoImage"
+                    android:src="@drawable/image_not_found"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnChangeTeacherProfilePhoto"
+                    android:layout_marginTop="60sp"
+                    android:layout_width="300sp"
+                    android:layout_height="45sp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/signup_button_background"
+                    android:fontFamily="serif"
+                    android:text="Add profile photo"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnChangeTeacherProfilePhotoNext"
+                    android:layout_marginTop="80sp"
+                    android:layout_width="150sp"
+                    android:layout_height="45sp"
+                    android:layout_gravity="right"
+                    android:fontFamily="serif"
+                    android:drawableRight="@drawable/baseline_arrow_forward_24"
+                    android:padding="8sp"
+                    android:backgroundTint="@color/blue_light"
+                    android:text="Next"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

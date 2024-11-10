@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".teacher.YearWiseStudentsListActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/svYearWiseStudentsListSearchView"
+        app:queryHint="Search Students"
+        app:iconifiedByDefault="false"
+        android:layout_margin="16sp"
+        android:padding="8sp"
+        android:background="@drawable/btn_background"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvYearWiseStudentsList"
+        android:layout_margin="10sp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvYearWiseStudentsListNoDataAvailable"
+        android:text="No Students Available"
+        android:textColor="@color/blue_light"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:visibility="gone"/>
+
+</LinearLayout>

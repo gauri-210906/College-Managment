@@ -89,5 +89,21 @@
             android:background="@drawable/btnbackground"
             />
 
+
+        <TextView
+            android:id="@+id/tvLoginNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account ? | Sign up"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_below="@id/ivLoginLogo"
+            android:textAlignment="textEnd"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="7sp"
+            />
+
+
     </LinearLayout>
 </RelativeLayout>

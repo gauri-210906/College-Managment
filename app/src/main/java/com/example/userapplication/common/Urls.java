@@ -13,5 +13,13 @@ public class Urls {
     public static String teacherForgetPasswordWebService = webServiceAddress + "teacherForgetPassword.php";
     public static String updateProfileStudentWebService = webServiceAddress + "updateStudentProfile.php";
     public static String updateProfileTeacherWebService = webServiceAddress + "updateTeacherProfile.php";
+    public static String getAllDepartmentTeacherWebService = webServiceAddress + "getAllDepartmentDetails.php";
+    public static String getAllDepartmentWiseYearList = webServiceAddress + "departmentwiseyear.php";
+    public static String getAllStudentCurrentLocation = webServiceAddress + "getAllStudentLocation.php";
+    public static String getYearWiseStudentsWebService = webServiceAddress + "yearWiseStudentsList.php";
+    public static String showStudentWiseDetailsWebService = webServiceAddress + "showstudentwisedetails.php";
+    public static String studentAddProfilePhotoWebService = webServiceAddress + "addStudentRegisterImage.php";
+    public static String teacherAddProfilePhotoWebService = webServiceAddress + "addTeacherProfilePhoto.php";
+    public static String teacherRegisterWebService = webServiceAddress + "teacherRegister.php";
 
 }

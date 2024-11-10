@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView"
+    android:background="@drawable/signup_background">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".teacher.TeacherRegistrationActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7">
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:cardCornerRadius="28dp"
+            android:layout_marginBottom="30dp"
+            android:layout_margin="15sp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome"
+                    android:textColor="@color/primary"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:text="Please register with your information"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"/>
+
+                <EditText
+                    android:id="@+id/etRegisterName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/etRegistermobileno"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:maxLength="10"
+                    android:hint="Mobile Number"
+                    android:inputType="number"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Email ID"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterBranch"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Branch"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Experience"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegisterEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Education"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/etRegisterUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/etRegisterPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="8sp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"/>
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnStudentRegistrationRegister"
+                    android:layout_width="300sp"
+                    android:layout_height="45sp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/signup_button_background"
+                    android:fontFamily="serif"
+                    android:text="Register"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

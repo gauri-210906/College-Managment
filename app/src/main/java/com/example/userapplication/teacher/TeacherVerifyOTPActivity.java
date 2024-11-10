@@ -1,4 +1,4 @@
-package com.example.userapplication.student;
+package com.example.userapplication.teacher;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,30 +67,32 @@ import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
 
-public class VerifyOTPActivity extends AppCompatActivity {
+public class TeacherVerifyOTPActivity extends AppCompatActivity {
 
     TextView tvMobileNo, tvResendOTP;
     AppCompatButton btnVerify;
     ProgressDialog progressDialog;
     EditText etInput1,etInput2,etInput3,etInput4,etInput5,etInput6;
-    private String strVerificationCode, strName, strMobileNo,strEnrollmentNumber, strEmail, strBranch,strClass,strSemester,strAdharno,strUsername, strPassword;
+    private String strVerificationCode, strName, strMobileNo, strEmail, strBranch,strExperience,strEducation,strUsername, strPassword;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     double latitude, longitude;
     String address;
     Bitmap bitmap;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_otpactivity);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_teacher_verify_otpactivity);
 
-        if (ActivityCompat.checkSelfPermission(VerifyOTPActivity.this,
+        if (ActivityCompat.checkSelfPermission(TeacherVerifyOTPActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(VerifyOTPActivity.this,
+                ActivityCompat.checkSelfPermission(TeacherVerifyOTPActivity.this,
                         Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 
-            ActivityCompat.requestPermissions(VerifyOTPActivity.this,new String[]{
+            ActivityCompat.requestPermissions(TeacherVerifyOTPActivity.this,new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
             }, 101);
@@ -110,12 +113,10 @@ public class VerifyOTPActivity extends AppCompatActivity {
         strVerificationCode =  getIntent().getStringExtra("verificationCode");
         strName =  getIntent().getStringExtra("name");
         strMobileNo =  getIntent().getStringExtra("mobileno");
-        strEnrollmentNumber = getIntent().getStringExtra("enrollmentno");
-        strEmail =  getIntent().getStringExtra("emailid");
+        strEmail =  getIntent().getStringExtra("email");
         strBranch =  getIntent().getStringExtra("branch");
-        strClass =  getIntent().getStringExtra("class");
-        strSemester =  getIntent().getStringExtra("semester");
-        strAdharno =  getIntent().getStringExtra("aadharno");
+        strEducation =  getIntent().getStringExtra("experience");
+        strExperience =  getIntent().getStringExtra("education");
         strUsername =  getIntent().getStringExtra("username");
         strPassword =  getIntent().getStringExtra("password");
 
@@ -139,7 +140,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                         etInput5.getText().toString().trim().isEmpty() ||
                         etInput6.getText().toString().trim().isEmpty()){
 
-                    Toast.makeText(VerifyOTPActivity.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TeacherVerifyOTPActivity.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -147,7 +148,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                         etInput4.getText().toString() + etInput5.getText().toString() + etInput6.getText().toString();
 
                 if (strVerificationCode != null){
-                    progressDialog = new ProgressDialog(VerifyOTPActivity.this);
+                    progressDialog = new ProgressDialog(TeacherVerifyOTPActivity.this);
                     progressDialog.setTitle("Verifying OTP");
                     progressDialog.setMessage("Please wait...");
                     progressDialog.setCanceledOnTouchOutside(false);
@@ -165,7 +166,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
 
                             } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(VerifyOTPActivity.this, "OTP verification failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TeacherVerifyOTPActivity.this, "OTP verification failed", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -178,12 +179,12 @@ public class VerifyOTPActivity extends AppCompatActivity {
         tvResendOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + strMobileNo, 60, TimeUnit.SECONDS, VerifyOTPActivity.this,
+                PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + strMobileNo, 60, TimeUnit.SECONDS, TeacherVerifyOTPActivity.this,
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                 progressDialog.dismiss();
-                                Toast.makeText(VerifyOTPActivity.this, "Verification Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TeacherVerifyOTPActivity.this, "Verification Completed", Toast.LENGTH_SHORT).show();
 
 
                             }
@@ -191,7 +192,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(VerifyOTPActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TeacherVerifyOTPActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -215,35 +216,35 @@ public class VerifyOTPActivity extends AppCompatActivity {
     private void getStudentCurrentLocation() {
 
         FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient
-                (VerifyOTPActivity.this);
+                (TeacherVerifyOTPActivity.this);
 
         fusedLocationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY,
                 new CancellationToken() {
-            @NonNull
-            @Override
-            public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
-                return null;
-            }
+                    @NonNull
+                    @Override
+                    public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
+                        return null;
+                    }
 
 
-            @Override
-            public boolean isCancellationRequested() {
-                return false;
-            }
-        }).addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public boolean isCancellationRequested() {
+                        return false;
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
 
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
 
-                Geocoder geocoder = new Geocoder(VerifyOTPActivity.this);
+                Geocoder geocoder = new Geocoder(TeacherVerifyOTPActivity.this);
 
                 try {
                     List<Address> addressList = geocoder.getFromLocation(latitude,longitude,1);
                     address = addressList.get(0).getAddressLine(0);
 
-                    userRegisterDetails(latitude,longitude,address);
+                    teacherRegisterDetails(latitude,longitude,address);
 
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -254,7 +255,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(VerifyOTPActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(TeacherVerifyOTPActivity.this, ""+e, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -274,26 +275,24 @@ public class VerifyOTPActivity extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
     }
 
-    private void userRegisterDetails(double latitude,double longitude, String address) {
+    private void teacherRegisterDetails(double latitude,double longitude, String address) {
         // client server comm
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
         params.put("name", strName);
         params.put("mobileno", strMobileNo);
-        params.put("enrollmentno",strEnrollmentNumber);
-        params.put("emailid", strEmail);
+        params.put("email", strEmail);
         params.put("branch", strBranch);
-        params.put("class", strClass);
-        params.put("semester", strSemester);
-        params.put("aadharno", strAdharno);
+        params.put("experience", strExperience);
+        params.put("education",strEducation);
         params.put("latitude",latitude);
         params.put("longitude",longitude);
         params.put("address",address);
         params.put("username", strUsername);
         params.put("password", strPassword);
 
-        client.post(Urls.registerUserWebService,params,new JsonHttpResponseHandler()
+        client.post(Urls.teacherRegisterWebService,params,new JsonHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -307,7 +306,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
 
                             } else {
 
-                                Toast.makeText(VerifyOTPActivity.this, "Already Data Present ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TeacherVerifyOTPActivity.this, "Already Data Present ", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e){
@@ -319,7 +318,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
 //                        super.onFailure(statusCode, headers, throwable, errorResponse);
                         progressDialog.dismiss();
-                        Toast.makeText(VerifyOTPActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TeacherVerifyOTPActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -330,12 +329,12 @@ public class VerifyOTPActivity extends AppCompatActivity {
 
     private void uploadProfilePhoto(Bitmap bitmap, int lastinsertedid) {
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST,
-                Urls.studentAddProfilePhotoWebService,
+                Urls.teacherAddProfilePhotoWebService,
                 new Response.Listener<NetworkResponse>() {
                     @Override
                     public void onResponse(NetworkResponse response) {
 
-                        Intent i = new Intent(VerifyOTPActivity.this, StudentHomeActivity.class);
+                        Intent i = new Intent(TeacherVerifyOTPActivity.this, TeacherHomeActivity.class);
                         startActivity(i);
                         finish();
 
@@ -343,7 +342,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(VerifyOTPActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(TeacherVerifyOTPActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -365,7 +364,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
             }
         };
 
-        Volley.newRequestQueue(VerifyOTPActivity.this).add(volleyMultipartRequest);
+        Volley.newRequestQueue(TeacherVerifyOTPActivity.this).add(volleyMultipartRequest);
 
     }
 
@@ -485,9 +484,5 @@ public class VerifyOTPActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 
 }

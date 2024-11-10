@@ -1,5 +1,6 @@
 package com.example.userapplication.teacher;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -35,7 +36,7 @@ import cz.msebera.android.httpclient.Header;
 public class TeacherLoginActivity extends AppCompatActivity {
 
     ImageView ivLogo;
-    TextView tvLoginHere,tvForgetPassword;
+    TextView tvLoginHere,tvForgetPassword,tvNewUser;
     EditText etUsername, etPassword;
     CheckBox cbShowHide;
     AppCompatButton btnLogin;
@@ -44,6 +45,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,8 @@ public class TeacherLoginActivity extends AppCompatActivity {
         cbShowHide = findViewById(R.id.cbLoginShowHidePassword);
         btnLogin = findViewById(R.id.btnLoginLogin);
         tvForgetPassword = findViewById(R.id.tvLoginForgetPassword);
+        tvNewUser = findViewById(R.id.tvLoginNewUser);
+
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(TeacherLoginActivity.this);
         editor = sharedPreferences.edit();
@@ -108,6 +112,14 @@ public class TeacherLoginActivity extends AppCompatActivity {
             }
         });
 
+        tvNewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(TeacherLoginActivity.this, TeacherRegistrationActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,9 +147,13 @@ public class TeacherLoginActivity extends AppCompatActivity {
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
                         try {
+                            progressDialog.dismiss();
+
                             String status = response.getString("success");
-                            if (status.equals("1")){
-                                progressDialog.dismiss();
+                            String strUserrole = response.getString("userrole");
+
+                            if (status.equals("1") && strUserrole.equals("teacher")){
+
 
                                 Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
                                 editor.putString("username",etUsername.getText().toString()).commit();
@@ -147,8 +163,31 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
                                 startActivity(i);
                                 finish();
-                            } else {
-                                progressDialog.dismiss();
+                            } else if (status.equals("1") && strUserrole.equals("admin")) {
+
+                                /*Intent i = new Intent(TeacherLoginActivity.this, .class);
+                                editor.putString("username",etUsername.getText().toString()).commit();
+                                editor.putString("password", etPassword.getText().toString()).commit();
+
+                                editor.putBoolean("isLogin",true).commit();
+
+                                startActivity(i);
+                                finish();*/
+
+                            } else if (status.equals("1") && strUserrole.equals("hod")) {
+
+                                /*Intent i = new Intent(TeacherLoginActivity.this,.class);
+                                editor.putString("username",etUsername.getText().toString()).commit();
+                                editor.putString("password", etPassword.getText().toString()).commit();
+
+                                editor.putBoolean("isLogin",true).commit();
+
+                                startActivity(i);
+                                finish();*/
+
+                            }
+
+                            else {
                                 Toast.makeText(TeacherLoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                             }
 

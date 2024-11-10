@@ -15,11 +15,23 @@
         android:orientation="vertical"
         >
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTeacherMyProfileEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/blue_light"
+            android:padding="10sp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30sp">
+            android:layout_marginTop="20sp">
 
             <ImageView
                 android:id="@+id/ivTeacherMyProfilePhoto"
@@ -28,7 +40,7 @@
                 android:src="@drawable/baseline_insert_photo_24" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnTeacherMyProfileEditProfile"
+                android:id="@+id/btnTeacherMyProfileEditProfilePhoto"
                 android:layout_width="51dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
