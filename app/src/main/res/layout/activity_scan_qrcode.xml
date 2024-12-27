@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".student.ScanQRCodeActivity"
+    android:gravity="center">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="Scan QR"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/acbtnStudentScanQRCodeActivityScanner"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:text="Scanner"
+        android:layout_marginTop="40sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/blue_light"/>
+
+
+
+</LinearLayout>

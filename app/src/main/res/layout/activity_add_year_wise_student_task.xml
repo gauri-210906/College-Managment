@@ -169,7 +169,7 @@
                     android:layout_height="45sp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/blue_light"
-                    android:text="Save"
+                    android:text="Upload"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textStyle="bold" />

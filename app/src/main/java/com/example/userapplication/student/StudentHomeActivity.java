@@ -11,20 +11,30 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
-public class StudentHomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+import java.util.Objects;
+
+public class StudentHomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     BottomNavigationView bottomNavigationView;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,28 +49,38 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.homeBottomNavigationMenuHome);
 
+        drawerLayout = findViewById(R.id.StudentHomeActivityDrawerLayout);
+        navigationView = findViewById(R.id.nv_StudentHomeActivity_navigation_drawer);
+
+        toggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.start,R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.home_menu, menu);
+        inflater.inflate(R.menu.student_navigation_drawer, menu);
 
         return true;
-    }
+    }*/
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    /*@Override
+     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if (item.getItemId() == R.id.homeMenuMyProfile){
-            Intent i = new Intent(StudentHomeActivity.this, StudentMyProfileActivity.class);
-            startActivity(i);
-        } else if (item.getItemId() == R.id.homeMenuLogOut) {
-
-            logout();
-        }
-        return true;
-    }
+         if (item.getItemId() == R.id.homeMenuMyProfile){
+             Intent i = new Intent(StudentHomeActivity.this, StudentMyProfileActivity.class);
+             startActivity(i);
+         } else if (item.getItemId() == R.id.homeMenuLogOut) {
+             logout();
+         }
+         return true;
+     }
+ */
 
     private void logout() {
         AlertDialog.Builder ad = new AlertDialog.Builder(StudentHomeActivity.this);
@@ -105,6 +125,7 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
     NotificationFragment notificationFragment = new NotificationFragment();
     AddFragment addFragment = new AddFragment();
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -126,6 +147,29 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
 
         }
 
+
+
+        // navigation drawer
+        if (item.getItemId() == R.id.student_navigation_drawer_MyProfile){
+            Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.student_navigation_drawer_settings){
+            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.student_navigation_drawer_aboutus){
+            Toast.makeText(this, "About Us", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.student_navigation_drawer_contactus){
+            Toast.makeText(this, "Contact Us", Toast.LENGTH_SHORT).show();
+        }  else if (item.getItemId() == R.id.student_navigation_drawer_logout){
+            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)){
+            return true;
+        }
 
         return true;
     }

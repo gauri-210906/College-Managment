@@ -1,4 +1,3 @@
-@file:Suppress("UNUSED_EXPRESSION")
 
 plugins {
     alias(libs.plugins.android.application)
@@ -57,11 +56,17 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation ("com.google.android.gms:play-services-auth:21.2.0") // sign with google
-    implementation("com.google.firebase:firebase-bom:33.1.2")
+    implementation ("com.google.android.gms:play-services-auth:21.3.0") // sign with google
+    implementation("com.google.firebase:firebase-bom:33.7.0")
     implementation ("com.loopj.android:android-async-http:1.4.11")  // client - server communication
     implementation ("com.github.bumptech.glide:glide:4.15.1")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.android.volley:volley:1.2.1") // client-server communication
     implementation("com.google.android.gms:play-services-location:21.3.0") // to get location
+    implementation("com.google.zxing:core:3.5.0")           // QR code generator
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")      // QR Scanner
+    implementation ("com.github.denzcoskun:imageslideshow:0.1.2")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+
+
 }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -31,9 +32,7 @@ import cz.msebera.android.httpclient.Header;
 public class AddFragment extends Fragment {
 
     EditText etDate, etTitle, etName,etYear,etDescription;
-
     AppCompatButton acbtnSubmit;
-
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -82,9 +81,6 @@ public class AddFragment extends Fragment {
             }
         });
 
-
-
-
         return view;
     }
 
@@ -99,7 +95,6 @@ public class AddFragment extends Fragment {
         params.put("year",etYear.getText().toString());
         params.put("description",etDescription.getText().toString());
 
-
         client.post(Urls.addStudentResponseWebService,params, new JsonHttpResponseHandler(){
 
             @Override
@@ -111,7 +106,6 @@ public class AddFragment extends Fragment {
                 try {
                     String status = response.getString("success");
                     if (status.equals("1")){
-
 
                         AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
 
@@ -126,9 +120,6 @@ public class AddFragment extends Fragment {
                                 dialog.dismiss();
                             }
                         }).create().show();
-
-
-
 
                     }
 
@@ -147,9 +138,6 @@ public class AddFragment extends Fragment {
 
         });
 
-
-
-
     }
 
     private void showAlertDialogBox() {
@@ -164,13 +152,13 @@ public class AddFragment extends Fragment {
         builder.setView(dialogView);
 
 
-       /* // Optionally set title or message
-        builder.setTitle("Custom Dialog")
-                .setMessage("This is a custom dialog with an image.");
-
-        // Find the image view from the layout if you need to change the image dynamically
-        ImageView imageView = dialogView.findViewById(R.id.imageView);
-        imageView.setImageResource(R.drawable.your_image); */
+//       // Optionally set title or message
+//        builder.setTitle("Custom Dialog")
+//                .setMessage("This is a custom dialog with an image.");
+//
+//        // Find the image view from the layout if you need to change the image dynamically
+//        ImageView imageView = dialogView.findViewById(R.id.imageView);
+//        imageView.setImageResource(R.drawable.your_image);
 
 
 

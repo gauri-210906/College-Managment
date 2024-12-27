@@ -89,16 +89,16 @@ public class AddYearWiseStudentTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (etSubject.getText().toString().isEmpty()) {
-                    etSubject.setError("Please enter your name");
+                    etSubject.setError("Please enter subject");
                 } else if (etDeadline.getText().toString().isEmpty()) {
-                    etDeadline.setError("Please enter your mobile number");
+                    etDeadline.setError("Please enter deadline");
                 } else if (etDescription.getText().toString().isEmpty()) {
-                    etDescription.setError("Please enter Email ID");
+                    etDescription.setError("Please enter description");
                 } else {
 
                     progressDialog = new ProgressDialog(AddYearWiseStudentTaskActivity.this);
                     progressDialog.setTitle("Please wait...");
-                    progressDialog.setMessage("Registration is in progress");
+                    progressDialog.setMessage("Updating task");
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
 
@@ -118,8 +118,8 @@ public class AddYearWiseStudentTaskActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
 
         params.put("year", strYear);
-        params.put("deadline", etDeadline);
-        params.put("description", etDescription);
+        params.put("taskdeadline", etDeadline);
+        params.put("taskdescription", etDescription);
         params.put("subject", etSubject);
 
         client.post(Urls.insertStudentTaskWebService,params,new JsonHttpResponseHandler()
@@ -135,19 +135,21 @@ public class AddYearWiseStudentTaskActivity extends AppCompatActivity {
 
                                 uploadTaskImage(bitmap,response.getInt("lastinsertedid"));
 
-                                AlertDialog.Builder ad = new AlertDialog.Builder(AddYearWiseStudentTaskActivity.this);
+//                                AlertDialog.Builder ad = new AlertDialog.Builder(AddYearWiseStudentTaskActivity.this);
+//
+//                                LayoutInflater inflater = getLayoutInflater();
+//                                View dialogView = inflater.inflate(R.layout.alert_dialogbox2, null);
+//
+//                                ad.setView(dialogView);
+//
+//                                ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        dialog.dismiss();
+//                                    }
+//                                }).create().show();
 
-                                LayoutInflater inflater = getLayoutInflater();
-                                View dialogView = inflater.inflate(R.layout.alert_dialogbox2, null);
-
-                                ad.setView(dialogView);
-
-                                ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                }).create().show();
+                                Toast.makeText(AddYearWiseStudentTaskActivity.this, "Added task Successfully", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -229,7 +231,7 @@ public class AddYearWiseStudentTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(resultCode, requestCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
             filepath = data.getData();
