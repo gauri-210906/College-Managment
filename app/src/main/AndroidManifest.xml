@@ -102,7 +102,7 @@
         <activity
             android:name=".teacher.TeacherHomeActivity"
             android:exported="false"
-            android:theme="@style/ShowActionbar" />
+             />
         <activity
             android:name=".teacher.TeacherLoginActivity"
             android:exported="false" />
@@ -132,7 +132,7 @@
         <activity
             android:name=".student.StudentHomeActivity"
             android:exported="false"
-            android:theme="@style/ShowActionbar" />
+             />
         <activity
             android:name=".student.StudentLoginActivity"
             android:exported="false" />

@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.userapplication.R;
@@ -45,6 +47,9 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
         preferences = PreferenceManager.getDefaultSharedPreferences(StudentHomeActivity.this);
         editor = preferences.edit();
 
+        Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
+        setSupportActionBar(toolbar);
+
         bottomNavigationView = findViewById(R.id.studentHomeBottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.homeBottomNavigationMenuHome);
@@ -52,7 +57,7 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
         drawerLayout = findViewById(R.id.StudentHomeActivityDrawerLayout);
         navigationView = findViewById(R.id.nv_StudentHomeActivity_navigation_drawer);
 
-        toggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.start,R.string.close);
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.start,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
@@ -162,15 +167,17 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
             Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
         }
 
+
+
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)){
-            return true;
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-
-        return true;
     }
 }

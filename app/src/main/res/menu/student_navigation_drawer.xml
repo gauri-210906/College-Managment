@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:shownIn="navigation_view">
 
-    <item android:id="@+id/student_navigation_drawer_MyProfile"
-        android:title="My Profile"
-        android:icon="@drawable/profile"/>
+    <group android:checkableBehavior="single">
 
-    <item android:id="@+id/student_navigation_drawer_settings"
-        android:title="Settings"
-        android:icon="@drawable/settings"/>
+        <item
+            android:id="@+id/student_navigation_drawer_MyProfile"
+            android:icon="@drawable/profile"
+            android:title="My Profile" />
 
-    <item android:id="@+id/student_navigation_drawer_aboutus"
-        android:title="About Us"
-        android:icon="@drawable/about_us"/>
+        <item
+            android:id="@+id/student_navigation_drawer_settings"
+            android:icon="@drawable/settings"
+            android:title="Settings" />
 
-    <item android:id="@+id/student_navigation_drawer_contactus"
-        android:title="Contact Us"
-        android:icon="@drawable/contact_us"/>
+        <item
+            android:id="@+id/student_navigation_drawer_aboutus"
+            android:icon="@drawable/about_us"
+            android:title="About Us" />
 
-    <item android:id="@+id/student_navigation_drawer_logout"
-        android:title="Logout"
-        android:icon="@drawable/logout"/>
+        <item
+            android:id="@+id/student_navigation_drawer_contactus"
+            android:icon="@drawable/contact_us"
+            android:title="Contact Us" />
+
+    </group>
+    <item android:title="">
+
+        <menu>
+
+            <item
+                android:id="@+id/student_navigation_drawer_logout"
+                android:icon="@drawable/logout"
+                android:title="Logout" />
+        </menu>
+    </item>
+
 
 </menu>
