@@ -124,7 +124,7 @@ public class HODLoginActivity extends AppCompatActivity {
         tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HODLoginActivity.this, .class);
+                Intent i = new Intent(HODLoginActivity.this, HodRegistrationActivity.class);
                 startActivity(i);
             }
         });
