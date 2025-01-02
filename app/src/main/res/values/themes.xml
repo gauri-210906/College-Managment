@@ -28,9 +28,9 @@
     </style>
 
 
-    <!--<style name="ShowActionbar" parent="Theme.Material3.DayNight" />
+    <style name="ShowActionbar" parent="Theme.Material3.DayNight" />
 
-    <style name="Theme.UserApplication" parent="Theme.AppCompat.DayNight.NoActionBar" />-->
+    <!--<style name="Theme.UserApplication" parent="Theme.AppCompat.DayNight.NoActionBar" />-->
 
     <style name="Theme.UserApplication" parent="Theme.AppCompat.Light">
         <item name="windowActionBar">false</item>

@@ -25,5 +25,8 @@ public class Urls {
     public static String addTaskTeacherYearWebService = webServiceAddress + "addTaskTeacherYear.php";
     public static String insertStudentTaskWebService = webServiceAddress + "insertStudentTaskDetails.php";
     public static String uploadStudentTaskImageWebService = webServiceAddress + "uploadStudentTaskImage.php";
+    public static String hodRegistrationWebService = webServiceAddress + "hodRegister.php";
+    public static String hodLoginWebService = webServiceAddress + "hodLogin.php";
+    public static String hodAddProfilePhotoWebService = webServiceAddress + "hodAddProfilePhoto.php";
 
 }

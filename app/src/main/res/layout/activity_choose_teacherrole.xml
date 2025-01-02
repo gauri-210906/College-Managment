@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".teacher.ChooseTeacherroleActivity"
+    android:orientation="vertical"
+    android:background="@color/blue_221"
+    android:gravity="center_vertical">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_margin="25sp"
+        android:id="@+id/bt_sign_in_HOD"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/etbgshape"
+        android:drawableRight="@drawable/baseline_arrow_forward_24"
+        android:paddingStart="20sp"
+        android:paddingRight="15sp"
+        android:text="HOD login"
+        android:textAlignment="textStart"
+        android:textColor="@color/blue_195"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="RtlCompat" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_margin="25sp"
+        android:id="@+id/bt_sign_in_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/etbgshape"
+        android:drawableRight="@drawable/baseline_arrow_forward_24"
+        android:paddingStart="20sp"
+        android:paddingRight="15sp"
+        android:text="Teacher Login"
+        android:textAlignment="textStart"
+        android:textColor="@color/blue_195"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="RtlCompat" />
+
+</LinearLayout>

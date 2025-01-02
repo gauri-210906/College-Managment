@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.student.StudentLoginActivity;
+import com.example.userapplication.teacher.ChooseTeacherroleActivity;
 import com.example.userapplication.teacher.TeacherLoginActivity;
 
 public class ChooseYourPortalActivity extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class ChooseYourPortalActivity extends AppCompatActivity {
         btnExpandTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ChooseYourPortalActivity.this, TeacherLoginActivity.class);
+                Intent i = new Intent(ChooseYourPortalActivity.this, ChooseTeacherroleActivity.class);
                 startActivity(i);
             }
         });

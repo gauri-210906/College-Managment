@@ -156,7 +156,8 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
 
         // navigation drawer
         if (item.getItemId() == R.id.student_navigation_drawer_MyProfile){
-            Toast.makeText(this, "My Profile", Toast.LENGTH_SHORT).show();
+            Intent i =new Intent(this,StudentMyProfileActivity.class);
+            startActivity(i);
         } else if (item.getItemId() == R.id.student_navigation_drawer_settings){
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.student_navigation_drawer_aboutus){
@@ -164,7 +165,7 @@ public class StudentHomeActivity extends AppCompatActivity implements BottomNavi
         } else if (item.getItemId() == R.id.student_navigation_drawer_contactus){
             Toast.makeText(this, "Contact Us", Toast.LENGTH_SHORT).show();
         }  else if (item.getItemId() == R.id.student_navigation_drawer_logout){
-            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            logout();
         }
 
 

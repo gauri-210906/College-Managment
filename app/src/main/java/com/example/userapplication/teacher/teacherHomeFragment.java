@@ -74,6 +74,7 @@ public class teacherHomeFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Urls.getAllDepartmentTeacherWebService,
                 new Response.Listener<String>() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onResponse(String response) {
                         try {

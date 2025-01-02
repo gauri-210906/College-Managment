@@ -1,4 +1,4 @@
-package com.example.userapplication.teacher;
+package com.example.userapplication.HOD;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -18,12 +18,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.userapplication.R;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.common.Urls;
+import com.example.userapplication.teacher.ConfirmRegisterMobileNumberTeacherActivity;
+import com.example.userapplication.teacher.TeacherHomeActivity;
+import com.example.userapplication.teacher.TeacherLoginActivity;
+import com.example.userapplication.teacher.TeacherRegistrationActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -33,7 +41,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class TeacherLoginActivity extends AppCompatActivity {
+public class HODLoginActivity extends AppCompatActivity {
 
     ImageView ivLogo;
     TextView tvLoginHere,tvForgetPassword,tvNewUser;
@@ -49,7 +57,8 @@ public class TeacherLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_login);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_hodlogin);
 
         ivLogo = findViewById(R.id.ivLoginLogo);
         tvLoginHere = findViewById(R.id.tvLoginTitle);
@@ -61,11 +70,11 @@ public class TeacherLoginActivity extends AppCompatActivity {
         tvNewUser = findViewById(R.id.tvLoginNewUser);
 
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(TeacherLoginActivity.this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HODLoginActivity.this);
         editor = sharedPreferences.edit();
 
         if (sharedPreferences.getBoolean("isLogin", false)){
-            Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
+            Intent i = new Intent(HODLoginActivity.this, HodHomeActivity.class);
             startActivity(i);
             finish();
         }
@@ -88,7 +97,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                 }
 
                 else {
-                    progressDialog = new ProgressDialog(TeacherLoginActivity.this);
+                    progressDialog = new ProgressDialog(HODLoginActivity.this);
                     progressDialog.setTitle("Please Wait");
                     progressDialog.setMessage("Login under process...");
                     progressDialog.show();
@@ -115,7 +124,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
         tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TeacherLoginActivity.this, TeacherRegistrationActivity.class);
+                Intent i = new Intent(HODLoginActivity.this, .class);
                 startActivity(i);
             }
         });
@@ -124,7 +133,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TeacherLoginActivity.this, ConfirmRegisterMobileNumberTeacherActivity.class);
+                Intent i = new Intent(HODLoginActivity.this, ConfirmRegisterMobileNumberTeacherActivity.class);
                 startActivity(i);
             }
         });
@@ -132,16 +141,14 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
     }
 
-
     private void userLogin() {
-
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
         params.put("username", etUsername.getText().toString());
         params.put("password", etPassword.getText().toString());
 
-        client.post(Urls.teacherLoginWebService,params,new JsonHttpResponseHandler()
+        client.post(Urls.hodLoginWebService,params,new JsonHttpResponseHandler()
                 {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -155,25 +162,16 @@ public class TeacherLoginActivity extends AppCompatActivity {
                             if (status.equals("1") && strUserrole.equals("teacher")){
 
 
-                                Intent i = new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class);
-                                editor.putString("username",etUsername.getText().toString()).commit();
-                                editor.putString("password", etPassword.getText().toString()).commit();
+                                Intent i = new Intent(HODLoginActivity.this, HodHomeActivity.class);
 
                                 editor.putBoolean("isLogin",true).commit();
 
                                 startActivity(i);
                                 finish();
-                            } else if (status.equals("1") && strUserrole.equals("admin")) {
-
-
-
-                            } else if (status.equals("1") && strUserrole.equals("hod")) {
-
-
                             }
 
                             else {
-                                Toast.makeText(TeacherLoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HODLoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e){
@@ -185,7 +183,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                         super.onFailure(statusCode, headers, throwable, errorResponse);
                         progressDialog.dismiss();
-                        Toast.makeText(TeacherLoginActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HODLoginActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                     }
                 }
         );

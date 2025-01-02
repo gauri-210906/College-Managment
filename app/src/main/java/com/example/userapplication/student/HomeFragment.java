@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import com.example.userapplication.SplashActivity;
 import com.google.zxing.client.android.Intents;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -76,43 +78,31 @@ public class HomeFragment extends Fragment {
 
             }
         });
-       /* cvTask.setOnClickListener(new View.OnClickListener() {
+        cvTask.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseRequireInsteadOfGet")
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), TaskFragment.class);
-                startActivity(i);
-
+               // Bundle bundle = new Bundle();
+                //TaskFragment taskFragment = new TaskFragment();
+               // bundle.putString("key",textbox.getText().toString());
+               // taskFragment.setArguments(bundle);
+                Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.scroll_view,new TaskFragment()).commit();
             }
         });
         cvNotification.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseRequireInsteadOfGet")
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), NotificationFragment.class);
-                startActivity(i);
-
+                Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.scroll_view,new TaskFragment()).commit();
             }
         });
         cvFeedback.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseRequireInsteadOfGet")
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AddFragment.class);
-                startActivity(i);
-
+                Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.scroll_view,new TaskFragment()).commit();
             }
-        });*/
-
-
-
-
-
-
-
-
-
-
-
-
-
+        });
 
         return view;
     }
