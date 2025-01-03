@@ -159,7 +159,7 @@ public class HODLoginActivity extends AppCompatActivity {
                             String status = response.getString("success");
                             String strUserrole = response.getString("userrole");
 
-                            if (status.equals("1") && strUserrole.equals("teacher")){
+                            if (status.equals("1") && strUserrole.equals("hod")){
 
 
                                 Intent i = new Intent(HODLoginActivity.this, HodHomeActivity.class);

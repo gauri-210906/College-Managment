@@ -39,7 +39,7 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
         return position;
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "WrongViewCast"})
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
@@ -53,6 +53,7 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
 
             holder.tvStudentName = view.findViewById(R.id.tv_year_wise_students_list_student_name);
             holder.tvEnrollmentno = view.findViewById(R.id.tv_year_wise_students_list_enrollment_number);
+            holder.ivStudentDelete = view.findViewById(R.id.iv_year_wise_students_list_delete);
 
             view.setTag(holder);
 
@@ -78,7 +79,7 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
 
 
     class ViewHolder{
-        TextView tvStudentName, tvEnrollmentno;
+        TextView tvStudentName, tvEnrollmentno, ivStudentDelete;
     }
 
 }
