@@ -163,11 +163,10 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
                                 startActivity(i);
                                 finish();
+
+
                             } else if (status.equals("1") && strUserrole.equals("admin")) {
 
-
-
-                            } else if (status.equals("1") && strUserrole.equals("hod")) {
 
 
                             }

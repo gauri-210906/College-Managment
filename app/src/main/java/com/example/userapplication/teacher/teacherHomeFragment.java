@@ -103,7 +103,7 @@ public class teacherHomeFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();*/
 
             }
         });

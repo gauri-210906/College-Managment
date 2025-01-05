@@ -26,6 +26,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".teacher.UpdateNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.showYearWiseNotificationDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.AddNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacher.AddNoteActivity"
+            android:exported="false" />
+        <activity
             android:name=".HOD.HodVerifyActivity"
             android:exported="false" />
         <activity

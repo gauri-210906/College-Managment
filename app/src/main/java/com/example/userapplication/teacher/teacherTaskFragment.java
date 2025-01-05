@@ -81,7 +81,7 @@ public class teacherTaskFragment extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(getActivity(), "Server Error", Toast.LENGTH_SHORT).show();*/
             }
         });
     }

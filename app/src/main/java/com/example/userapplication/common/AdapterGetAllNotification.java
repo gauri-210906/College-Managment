@@ -1,6 +1,5 @@
 package com.example.userapplication.common;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
+
 import com.example.userapplication.R;
-import com.example.userapplication.teacher.ShowStudentWiseDetailsActivity;
+import com.example.userapplication.teacher.AddNotificationActivity;
+import com.example.userapplication.teacher.showYearWiseNotificationDetailsActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -26,24 +28,24 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-public class AdapterGetYearWiseStudentsList extends BaseAdapter {
+public class AdapterGetAllNotification extends BaseAdapter {
 
-    List<POJOGetYearWiseStudentsList> list;
+    List<POJOGetAllNotification> pojoGetAllNotifications;
     Activity activity;
 
-    public AdapterGetYearWiseStudentsList(List<POJOGetYearWiseStudentsList> pojoGetYearWiseStudentsLists, Activity activity) {
-        this.list = pojoGetYearWiseStudentsLists;
+    public AdapterGetAllNotification(List<POJOGetAllNotification> pojoGetAllNotifications, Activity activity) {
+        this.pojoGetAllNotifications = pojoGetAllNotifications;
         this.activity = activity;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return pojoGetAllNotifications.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return pojoGetAllNotifications.get(position);
     }
 
     @Override
@@ -51,42 +53,44 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
         return position;
     }
 
-    @SuppressLint({"InflateParams", "WrongViewCast"})
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
-        ViewHolder holder;
-        final LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        final ViewHolder holder;
+        LayoutInflater inflater =(LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
         if (view == null){
 
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.lv_year_wise_students_list,null);
+            view = inflater.inflate(R.layout.lv_get_all_notification,null);
+            holder.tvTitle = view.findViewById(R.id.lv_get_all_notification_title);
+            holder.tvYear = view.findViewById(R.id.lv_get_all_notification_year);
+            holder.cvNote = view.findViewById(R.id.cv_get_all_notification);
+            holder.ivDelete = view.findViewById(R.id.iv_get_all_notification_Delete_Note);
 
-            holder.tvStudentName = view.findViewById(R.id.tv_year_wise_students_list_student_name);
-            holder.tvEnrollmentno = view.findViewById(R.id.tv_year_wise_students_list_enrollment_number);
-            holder.ivStudentDelete = view.findViewById(R.id.iv_year_wise_students_list_delete);
 
             view.setTag(holder);
 
-        } else {
+        }else {
+
             holder = (ViewHolder) view.getTag();
         }
 
-        final POJOGetYearWiseStudentsList obj = list.get(position);
-        holder.tvStudentName.setText(obj.getStrName());
-        holder.tvEnrollmentno.setText(obj.getStrEnrollmentno());
+        final POJOGetAllNotification obj = pojoGetAllNotifications.get(position);
+        holder.tvYear.setText(obj.getYear());
+        holder.tvTitle.setText(obj.getTitle());
 
-        holder.tvStudentName.setOnClickListener(new View.OnClickListener() {
+        holder.cvNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(activity, ShowStudentWiseDetailsActivity.class);
-                i.putExtra("enrollmentno",obj.getStrEnrollmentno());
+                Intent i = new Intent(activity, showYearWiseNotificationDetailsActivity.class);
+                i.putExtra("id",obj.getId());
                 activity.startActivity(i);
+
             }
         });
 
-        holder.ivStudentDelete.setOnClickListener(new View.OnClickListener() {
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder ad = new AlertDialog.Builder(activity);
@@ -101,22 +105,25 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        deleteStudent(obj.getStrEnrollmentno(),position);
+                        deleteNote(obj.getId(),position);
 
                     }
                 }).create().show();
             }
         });
 
+
+
+
         return view;
     }
 
-    private void deleteStudent(String strEnrollmentno, int position) {
+    private void deleteNote(String id, int position) {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        params.put("enrollmentno",strEnrollmentno);
-        client.post(Urls.deleteStudentWebService,params,new JsonHttpResponseHandler(){
+        params.put("id",id);
+        client.post(Urls.deleteNotificationTeacherWebService,params,new JsonHttpResponseHandler(){
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -125,7 +132,7 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
                 try {
                     String status = response.getString("success");
                     if (status.equals("1")){
-                        list.remove(position);
+                        pojoGetAllNotifications.remove(position);
                         notifyDataSetChanged();
                     }
 
@@ -146,9 +153,13 @@ public class AdapterGetYearWiseStudentsList extends BaseAdapter {
     }
 
 
-    class ViewHolder{
-        TextView tvStudentName, tvEnrollmentno;
-        ImageView ivStudentDelete;
+    class ViewHolder {
+
+        TextView tvTitle,tvYear;
+        CardView cvNote;
+        ImageView ivDelete, ivEdit;
+
     }
+
 
 }
