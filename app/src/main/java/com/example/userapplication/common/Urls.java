@@ -2,7 +2,7 @@ package com.example.userapplication.common;
 
 public class Urls {
 
-    public static String webServiceAddress = "http://192.168.24.231/CollegeAPI/";
+    public static String webServiceAddress = "http://192.168.1.6/CollegeAPI/";
     public static String loginUserWebService = webServiceAddress +"userlogin.php";
     public static String registerUserWebService =  webServiceAddress+"userregisterdetails.php";
     public static String forgetPasswordWebService = webServiceAddress + "userforgetpassword.php";

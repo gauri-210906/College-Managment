@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llAILeftChat"
+        android:background="@drawable/ask_ai_rounded_corner"
+        android:backgroundTint="@color/blue_normal_deep"
+        android:padding="8sp"
+        android:layout_marginEnd="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_margin="10sp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:id="@+id/tvAIChatLeftSide"
+            android:textStyle="bold"
+            android:textIsSelectable="true"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llUserRightChat"
+        android:background="@drawable/ask_ai_rounded_corner"
+        android:backgroundTint="@color/blue_white"
+        android:padding="8sp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        tools:ignore="RelativeOverlap">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_margin="10sp"
+            android:id="@+id/tvUserChatRightSide"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

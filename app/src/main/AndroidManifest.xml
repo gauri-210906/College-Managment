@@ -26,6 +26,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".teacher.AiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AskAiActivity"
+            android:exported="false" />
+        <activity
             android:name=".teacher.UpdateNotificationActivity"
             android:exported="false" />
         <activity
