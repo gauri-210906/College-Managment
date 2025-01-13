@@ -2,23 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeBottomNavigationMenuTeacherHome"
+        android:id="@+id/homeBottomNavigationMenuAdminHome"
         android:title="Home"
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/homeBottomNavigationMenuTeacherTask"
+        android:id="@+id/homeBottomNavigationMenuAdminTask"
         android:title="Task"
         android:icon="@drawable/baseline_task_24"/>
 
     <item
-        android:id="@+id/homeBottomNavigationMenuTeacherNotification"
+        android:id="@+id/homeBottomNavigationMenuAdminNotification"
         android:title="Notification"
         android:icon="@drawable/baseline_notifications_24"/>
 
-    <item
-        android:id="@+id/homeBottomNavigationMenuTeacherAdd"
-        android:title="AI"
-        android:icon="@drawable/baseline_add_24"/>
 
 </menu>

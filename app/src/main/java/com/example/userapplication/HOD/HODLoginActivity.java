@@ -26,6 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.userapplication.R;
+import com.example.userapplication.admin.AdminHomeActivity;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.common.Urls;
 import com.example.userapplication.teacher.ConfirmRegisterMobileNumberTeacherActivity;
@@ -163,6 +164,15 @@ public class HODLoginActivity extends AppCompatActivity {
 
 
                                 Intent i = new Intent(HODLoginActivity.this, HodHomeActivity.class);
+
+                                editor.putBoolean("isLogin",true).commit();
+
+                                startActivity(i);
+                                finish();
+                            } else if (status.equals("1") && strUserrole.equals("admin")){
+
+
+                                Intent i = new Intent(HODLoginActivity.this, AdminHomeActivity.class);
 
                                 editor.putBoolean("isLogin",true).commit();
 
