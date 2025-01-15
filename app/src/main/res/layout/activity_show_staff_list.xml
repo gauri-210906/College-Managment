@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".admin.ShowStaffListActivity">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svStaffListSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:background="@drawable/btn_background"
+        android:padding="8sp"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search Students" />
+
+    <ListView
+        android:id="@+id/lvStaffList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10sp" />
+
+
+    <TextView
+        android:id="@+id/tvStaffListNoDataAvailable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Students Available"
+        android:textColor="@color/blue_light"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

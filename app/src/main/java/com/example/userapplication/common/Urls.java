@@ -34,5 +34,8 @@ public class Urls {
     public static String showIDWiseNotificationTeacherWebService = webServiceAddress + "getIdWiseNotification.php";
     public static String deleteNotificationTeacherWebService = webServiceAddress + "deleteNote.php";
     public static String updateNotificationTeacherWebService = webServiceAddress + "updateNote.php";
+    public static String adminShowStaffListWebService = webServiceAddress + "getStaffList.php";
+    public static String adminDeleteStaffListWebService = webServiceAddress + "deleteStaff.php";
+    public static String adminShowStaffWiseDetailsWebService = webServiceAddress + "showStaffWiseDetails.php";
 
 }

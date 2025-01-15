@@ -26,6 +26,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".admin.ShowTeacherProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.ShowStaffListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.ShowStaffList"
+            android:exported="false" />
+        <activity
             android:name=".teacher.AiActivity"
             android:exported="false" />
         <activity

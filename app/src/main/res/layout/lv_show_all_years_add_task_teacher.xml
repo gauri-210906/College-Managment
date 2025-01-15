@@ -12,28 +12,33 @@
         android:id="@+id/cv_show_all_years_add_task_teacher"
         app:cardCornerRadius="16sp"
         app:cardElevation="16sp"
-        android:layout_marginTop="20sp"
+        app:cardBackgroundColor="@color/transparent"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/portal_background"
-            android:layout_margin="20sp"
+            android:layout_margin="10sp"
             >
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:id="@+id/tv_show_all_years_add_task_teacher"
                 android:text="Year"
-                android:textSize="28sp"
-                android:padding="25sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:drawableRight="@drawable/baseline_arrow_forward_24"
-                android:textColor="@color/black"/>
+                android:textColor="@color/blue_light"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="7sp"
+                android:background="@color/black" />
+
 
         </LinearLayout>
 

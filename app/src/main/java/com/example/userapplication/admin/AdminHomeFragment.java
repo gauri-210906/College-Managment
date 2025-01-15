@@ -49,11 +49,20 @@ public class AdminHomeFragment extends Fragment {
 
         rvGetAllDepartment = view.findViewById(R.id.rvAdminHomeFragmentDepartmentList);
         cvAllStudentLocation = view.findViewById(R.id.cvAdminHomeFragmentStudentLocation);
+        cvStaffList = view.findViewById(R.id.cvAdminHomeFragmentStaffList);
 
         cvAllStudentLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), ViewAllStudentsLocationActivity.class);
+                startActivity(i);
+            }
+        });
+
+        cvStaffList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ShowStaffListActivity.class);
                 startActivity(i);
             }
         });
