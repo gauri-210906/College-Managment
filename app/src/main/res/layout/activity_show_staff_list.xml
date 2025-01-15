@@ -11,8 +11,10 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svStaffListSearchView"
         android:layout_width="match_parent"
+        android:layout_marginTop="50sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
         android:layout_height="wrap_content"
-        android:layout_margin="16sp"
         android:background="@drawable/btn_background"
         android:padding="8sp"
         app:iconifiedByDefault="false"

@@ -55,6 +55,9 @@ public class ShowStaffListActivity extends AppCompatActivity {
         tvNoStudentsAvailable = findViewById(R.id.tvStaffListNoDataAvailable);
         lvStaffList = findViewById(R.id.lvStaffList);
 
+        pojoGetAllStaffLists = new ArrayList<>();
+
+
         getStaffList(); // method
 
         svSearchStudents.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
