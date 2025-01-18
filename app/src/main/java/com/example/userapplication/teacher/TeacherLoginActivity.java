@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.userapplication.R;
+import com.example.userapplication.admin.AdminHomeActivity;
 import com.example.userapplication.common.NetworkChangeListener;
 import com.example.userapplication.common.Urls;
 import com.loopj.android.http.AsyncHttpClient;
@@ -166,6 +167,13 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
 
                             } else if (status.equals("1") && strUserrole.equals("admin")) {
+
+                                Intent i = new Intent(TeacherLoginActivity.this, AdminHomeActivity.class);
+
+                                editor.putBoolean("isLogin",true).commit();
+
+                                startActivity(i);
+                                finish();
 
 
 
